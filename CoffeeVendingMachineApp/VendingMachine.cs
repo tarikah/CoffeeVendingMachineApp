@@ -12,7 +12,7 @@ namespace CoffeeVendingMachineApp
         {
             builder.PrepareCoffee();
         }
-        public void MakeCustomCoffee(ICoffeeBuilder builder, Ingredients ingridients)
+        public void MakeCoffee(ICoffeeBuilder builder, Ingredients ingridients)
         {
             builder.PrepareCoffee(ingridients);
         }
