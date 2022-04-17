@@ -9,18 +9,15 @@ namespace CoffeeVendingMachineApp
     public interface ICoffeeBuilder
     {
          void PrepareCoffee();
-         void PrepareCoffee(Ingredients ingridients);
+         void PrepareCoffee(Ingredients ingredients);
         Coffee GetCoffee { get; }
     }
    
     public class CoffeBuilder : ICoffeeBuilder
     {
         Coffee Coffee;
-        ICoffeService _coffeeService;
-        public CoffeBuilder(string coffeeType)
+        public CoffeBuilder(string coffeeType, ICoffeService _coffeeService)
         {
-            _coffeeService = new CoffeeService();
-
             Coffee = _coffeeService.GetTypeOfCoffee(coffeeType);
         }
         public Coffee GetCoffee
@@ -31,9 +28,9 @@ namespace CoffeeVendingMachineApp
         {
             Coffee.PrepareIngridients();
         }
-        public void PrepareCoffee(Ingredients ingridients)
+        public void PrepareCoffee(Ingredients ingredients)
         {
-            Coffee.PrepareIngridients(ingridients);
+            Coffee.PrepareIngridients(ingredients);
         }
 
     }

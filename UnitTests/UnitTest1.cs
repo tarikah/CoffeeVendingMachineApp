@@ -12,8 +12,8 @@ namespace UnitTests
         public void CheckIfInstanceIsNull()
         {
             VendingMachine vendingMachine = new VendingMachine();
-            ICoffeeBuilder coffeeService= new CoffeBuilder("Americano");
-            vendingMachine.MakeCustomCoffee(coffeeService, new Ingredients(1, 2, 1, 1, 1));
+            ICoffeeBuilder coffeeService= new CoffeBuilder("Americano",new CoffeeService());
+            vendingMachine.MakeCoffee(coffeeService, new Ingredients(1, 2, 1, 1, 1));
 
             Assert.IsNotNull(coffeeService.GetCoffee);
         }
@@ -21,8 +21,8 @@ namespace UnitTests
         public void CheckIfRightIngredientsAreApplied()
         {
             VendingMachine vendingMachine = new VendingMachine();
-            ICoffeeBuilder coffeeService = new CoffeBuilder("Americano");
-            vendingMachine.MakeCustomCoffee(coffeeService, new Ingredients(1, 2, 1, 1, 1));
+            ICoffeeBuilder coffeeService = new CoffeBuilder("Americano", new CoffeeService());
+            vendingMachine.MakeCoffee(coffeeService, new Ingredients(1, 2, 1, 1, 1));
             bool condition =
                 coffeeService.GetCoffee.dosesOfMilk == 1
                 && coffeeService.GetCoffee.cupsOfCoffee == 2
@@ -35,8 +35,8 @@ namespace UnitTests
         public void CheckIfRightInstanceIsCreated()
         {
             VendingMachine vendingMachine = new VendingMachine();
-            ICoffeeBuilder coffeeService= new CoffeBuilder("Latte");
-            vendingMachine.MakeCustomCoffee(coffeeService, new Ingredients(1, 2, 1, 1, 1));
+            ICoffeeBuilder coffeeService= new CoffeBuilder("Latte", new CoffeeService());
+            vendingMachine.MakeCoffee(coffeeService, new Ingredients(1, 2, 1, 1, 1));
             Assert.IsInstanceOfType(coffeeService.GetCoffee, typeof(Latte));
         }
     }
